@@ -1,0 +1,514 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interflow AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
+
+    <style>
+        /* General styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #A894D5, #C4AEF2, #E0CAFF, #FDE6FF);
+            color: #373434;
+            overflow-x: hidden;
+        }
+
+        /* Header styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        .header-box.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container img {
+            width: 80px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #373434;
+            font-size: 16px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #6a0dad;
+        }
+
+        nav ul li a.active {
+            background-color: #6a0dad;
+            color: #fff;
+            border-radius: 5px;
+            padding: 8px 15px;
+        }
+
+        .title {
+            font-size: 36px;
+            color: #030303;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .title:hover {
+            transform: scale(1.1);
+            color: #6a0dad;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 900px;
+            margin: 120px auto 50px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .slide {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .slide .content {
+            max-width: 50%;
+            text-align: left;
+            padding-right: 20px;
+        }
+
+        .slide .content h2 {
+            font-size: 36px;
+            color: #0e0c0c;
+            margin-bottom: 20px;
+        }
+
+        .slide .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .slide img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #272121;
+            transition: color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #373434;
+            margin-bottom: 20px;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Team section */
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            margin: 20px;
+            flex: 0 0 calc(20% - 40px);
+            max-width: calc(20% - 40px);
+            text-align: center;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .team-member img {
+            width: 100%;
+            border-radius: 50%;
+            border: 4px solid #6a0dad;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover img {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-member h3 {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #6a0dad;
+            transition: color 0.3s ease;
+        }
+
+        .team-member p {
+            color: #73619E;
+            transition: color 0.3s ease;
+        }
+
+        /* Projects section */
+        .project-item {
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-item i {
+            font-size: 36px;
+            color: #373434;
+            margin-bottom: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .project-item:hover i {
+            transform: rotate(360deg);
+            color: #6a0dad;
+        }
+
+        .project-item h3 {
+            font-size: 24px;
+            color: #6a0dad;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .project-item p {
+            font-size: 18px;
+            color: #373434;
+            transition: color 0.3s ease;
+        }
+
+        /* Pricing section */
+        .pricing-item {
+            margin-bottom: 50px;
+        }
+
+        .pricing-item i {
+            font-size: 48px;
+            color: #373434;
+            margin-bottom: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .pricing-item:hover i {
+            transform: rotate(360deg);
+            color: #6a0dad;
+        }
+
+        .pricing-item h3 {
+            font-size: 24px;
+            color: #6a0dad;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .pricing-item p {
+            font-size: 18px;
+            color: #373434;
+            transition: color 0.3s ease;
+        }
+
+        /* Contact icon styles */
+        .contact-icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .contact-icons a {
+            text-decoration: none;
+            color: #373434;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-icons a:hover {
+            color: #6a0dad;
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #292929;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color:white;
+        }
+
+        /* Media queries */
+        @media(max-width: 768px) {
+            .slide {
+                flex-direction: column;
+            }
+
+            .slide .content,
+            .slide img {
+                max-width: 100%;
+                padding: 0;
+                text-align: center;
+            }
+
+            .team-member {
+                flex: 0 0 calc(50% - 40px);
+                max-width: calc(50% - 40px);
+            }
+        }
+
+        @media(max-width: 576px) {
+            .team-member {
+                flex: 0 0 calc(100% - 40px);
+                max-width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-box">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="{% static 'logo.jpg' %}" alt="Interflow AI Logo" onclick="reloadPage()">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about" class="nav-link active">About</a></li>
+                    <li><a href="#team" class="nav-link">Team</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="slide full-screen" id="home">
+            <div class="content">
+                <h2>Welcome to INTERFLOW.AI</h2>
+                <p>We are Interflow AI, a leading provider of AI-based web applications and products. Our mission is to harness the power of artificial intelligence to create innovative solutions that drive business growth and enhance user experiences.</p>
+                <p>Whether you need AI-powered chatbots, predictive analytics, or custom machine learning models, we have the expertise and technology to deliver tailored solutions to meet your unique needs.</p>
+                <p>Explore our website to learn more about our services, team, pricing, and how to get in touch with us. We look forward to helping you unlock the full potential of artificial intelligence for your business!</p>
+            </div>
+            <img src="{% static 'your-image.jpg' %}" alt="Welcome Image">
+        </div>
+        
+        <div class="section" id="about">
+            <h1>About Us</h1>
+            <p>INTERFLOW.AI is a cutting-edge technology company specializing in artificial intelligence solutions for businesses. We leverage the latest advancements in AI to develop innovative products and services that help our clients stay ahead in today's competitive market.</p>
+            <p>Our team of experienced AI engineers and developers is dedicated to delivering high-quality solutions that meet the unique needs of each client. Whether you're looking for chatbots, predictive analytics, or machine learning models, we've got you covered.</p>
+            <p>At INTERFLOW.AI, we're passionate about harnessing the power of AI to drive business growth and enhance user experiences. Contact us today to learn more about how we can help your business thrive!</p>
+        </div>
+        <!-- Team Section -->
+        <div class="section" id="team">
+            <h1>Our Team</h1>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="{% static 'sk1.jpg' %}" alt="Team Member 1">
+                    <h3>Surajee Kumar</h3>
+                    <p>CTO</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'mine.jpg' %}" alt="Team Member 2">
+                    <h3>Ranjani Shree </h3>
+                    <p>UX Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'prithiv.jpg' %}" alt="Team Member 3">
+                    <h3>Prithiv</h3>
+                    <p>Lead Developer</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'vigneshwar.jpg' %}" alt="Team Member 4">
+                    <h3>Vigneshwar</h3>
+                    <p>UX Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="C:\Users\Admin\OneDrive\Documents\Vigneshwar.jpg" alt="Team Member 5">
+                    <h3>David Wilson</h3>
+                    <p>Data Scientist</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projects" class="section">
+            <h1>Our Projects</h1>
+            <div class="project-item">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Chatbot Development</h3>
+                <p>AI-powered chatbots for automating customer support and improving user engagement.</p>
+            </div>
+            <div class="project-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>Predictive Analytics</h3>
+                <p>Advanced analytics solutions for predicting trends, forecasting sales, and optimizing business strategies.</p>
+            </div>
+            <div class="project-item">
+                <i class="fas fa-robot"></i>
+                <h3>Machine Learning Models</h3>
+                <p>Custom machine learning models for solving complex business problems and extracting insights from data.</p>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <div id="pricing" class="section">
+            <h1>Pricing</h1>
+            <div class="pricing-item">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Starter Plan</h3>
+                <p>Basic AI solutions for small businesses and startups.</p>
+            </div>
+            <div class="pricing-item">
+                <i class="fas fa-coins"></i>
+                <h3>Standard Plan</h3>
+                <p>Mid-tier AI solutions for growing businesses with moderate needs.</p>
+            </div>
+            <div class="pricing-item">
+                <i class="fas fa-gem"></i>
+                <h3>Premium Plan</h3>
+                <p>Advanced AI solutions for large enterprises with complex requirements.</p>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="section">
+            <h1>Contact Us</h1>
+            <p>Have questions or need more information? Reach out to us through our social media channels or send us an email.</p>
+            <div class="contact-icons">
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fas fa-phone"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Interflow AI. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            const sections = document.querySelectorAll('.section');
+
+            function setActiveLink() {
+                let index = sections.length;
+                while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+                navLinks.forEach((link) => link.classList.remove('active'));
+                navLinks[index].classList.add('active');
+            }
+
+            function showSections() {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    if (sectionTop < window.innerHeight - 150) {
+                        section.classList.add('visible');
+                    }
+                });
+            }
+
+            function adjustHeader() {
+                const header = document.querySelector('.header-box');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+
+            setActiveLink();
+            showSections();
+            adjustHeader();
+
+            window.addEventListener('scroll', function() {
+                setActiveLink();
+                showSections();
+                adjustHeader();
+            });
+        });
+
+        function reloadPage() {
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

@@ -11,97 +11,58 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
 
     <style>
-     
         /* General styles */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-          background: linear-gradient(to bottom, #A894D5, #C4AEF2, #E0CAFF, #FDE6FF);
+            background: linear-gradient(to bottom, #A894D5, #C4AEF2, #E0CAFF, #FDE6FF);
+            color: #373434;
+            overflow-x: hidden;
+        }
 
-    /* Green sea to nephritis */
-    color: #C4AEF2; /* White text color */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-/* Header styles */
-header {
+        /* Header styles */
+        header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            /* Semi-transparent dark background */
-            padding: 20px 0; /* Adjust padding */
+            height: 10%;
+            padding: 15px 0;
             z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, padding 0.3s ease;
         }
-        .header-box {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 80px 0;
-      z-index: 1000;
-      background-image: url('{% static 'bghead1.jpeg' %}'); /* Replace 'path/to/your/image.jpg' with the actual path to your header image */
-      background-size: cover; /* Cover the entire header area */
-      background-position: center; /* Center the image */
-      background-blend-mode: overlay; /* Blend the image with the background color */
-      /* Add any other styles as needed */
-  }
 
-
-
-  
-.header-box.scrolled {
-    padding: 5px 0; /* Adjust the padding when scrolled */
-    background-color: #A894D5; /* Add background color when scrolled */
-}
-
-
+        .header-box.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 1);
+        }
 
         .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-        .header :hover{
-            background-color: rgba(51, 51, 51, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .title {
-    font-size: 48px; /* Increased font size */
-    color: #030303; /* White text color */
-    font-family: 'Montserrat', sans-serif; /* Bold and attractive font */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions */
-    align-self: flex-start; /* Align title to the left corner */
-}
+        .logo-container img {
+            width: 80px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
 
-
-
-.title:hover {
-    transform: scale(1.1); /* Scale up on hover */
-    color: #ff69b4; /* Change color on hover */
-}
-
-/* Animation for fade-in effect */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.title {
-    animation: fadeIn 1s ease; /* Apply fade-in animation */
-}
-
-
+        .logo-container img:hover {
+            transform: scale(1.1);
+        }
 
         nav ul {
             list-style: none;
@@ -114,97 +75,127 @@ header {
 
         nav ul li a {
             text-decoration: none;
-            color: #2b2828;
+            color: #373434;
             font-size: 16px;
             padding: 10px 15px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Hover effect for options */
-    nav ul li a:hover {
-        text-decoration: none;
-        border-bottom: 2px solid rgb(6, 6, 6); /* White underline on hover */
-        transition: border-bottom 0.3s ease;
-    }
+        nav ul li a:hover {
+    color: #6a0dad;}
 
-    /* Active state for options */
-    nav ul li a.active {
-        background-color: #6a0dad; /* Example: Change background color for active state */
-        color: rgb(26, 24, 24); /* Example: Change text color for active state */
-        border-radius: 5px; /* Example: Add border radius for active state */
-        padding: 8px 15px; /* Example: Adjust padding for active state */
-    }
-
-        .logo-container img {
-            width: 100px;
-            height: 70px;
-          
-           
-            cursor: pointer;
-        }
-        .full-screen {
-    height: 100vh; /* Set height to full viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.slide {
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-.slide.active {
-    opacity: 1;
-}
-
-
-        /* Glitter animation */
-        @keyframes glitter {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
+        nav ul li a.active {
+            background-color: #6a0dad;
+            color: #fff;
+            border-radius: 5px;
+            padding: 8px 15px;
         }
 
-        /* Styles for twinkling stars */
-        .stars-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1; /* Ensure stars are behind other content */
-        }
-
-        .star {
-            position: absolute;
-            width: 4px; /* Adjust star size */
-            height: 4px; /* Adjust star size */
-            background-color: #fff;
-            border-radius: 50%;
-            animation: glitter 3s infinite alternate;
-            pointer-events: none;
-        }
-
-        /* Modernized font */
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
+        .title {
+            font-size: 36px;
+            color: #030303;
             font-family: 'Montserrat', sans-serif;
-            margin-bottom: 8px; /* Add space below titles */
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .title:hover {
+            transform: scale(1.1);
+            color: #6a0dad;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 900px;
+            margin: 120px auto 50px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .slide {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .slide .content {
+            max-width: 50%;
+            text-align: left;
+            padding-right: 20px;
+        }
+
+        .slide .content h2 {
+            font-size: 36px;
+            color: #0e0c0c;
+            margin-bottom: 20px;
+        }
+
+        .slide .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .slide img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 10px;
+        }
+/* Slideshow container */
+/* Adjusted slide content and image width to 100% for better alignment */
+.slide .content,
+.slide img {
+    width: 100%;
+}
+
+/* Ensured the images in the slideshow match the content's width */
+.slideshow-container {
+    position: relative;
+    width: 100%; /* Set to 100% to match content width */
+    max-width: 1000px; /* Maximum width to match content */
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slideshow-container img {
+    width: 100%;
+    display: none;
+    border-radius: 10px; /* Apply border radius to images */
+}
+
+.slideshow-container img.active {
+    display: block;
+}
+
+
+/* Remove the prev/next button styles */
+.prev, .next {
+    display: none; /* Hide the navigation buttons */
+}
+
+
+
+        h1 {
+            font-size: 36px;
+            color: #272121;
+            transition: color 0.3s ease;
+            margin-bottom: 20px;
         }
 
         p {
-            font-family: 'Open Sans', sans-serif;
-            margin-bottom: 10px; /* Add space below paragraphs */
+            font-size: 18px;
+            line-height: 1.6;
+            color: #373434;
+            margin-bottom: 20px;
         }
 
-        /* Animations for sections */
+        /* Sections */
         .section {
+            padding: 80px 0;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
@@ -215,29 +206,6 @@ header {
             transform: translateY(0);
         }
 
-        /* Main container */
-        .container {
-            max-width: 900px;
-            margin: 100px auto 50px;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 36px;
-            color: #272121;
-            transition: color 0.3s ease;
-        }
-
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-        }
-
         /* Team section */
         .team-members {
             display: flex;
@@ -246,30 +214,33 @@ header {
             margin-top: 50px;
         }
 
-        .team-member {
-            margin: 20px;
-            flex: 0 0 calc(20% - 40px);
-            max-width: calc(20% - 40px);
-            text-align: center;
-            transition: transform 0.5s ease, box-shadow 0.5s ease; /* Added transition for box-shadow */
-        }
+       /* Team section */
+.team-member {
+    margin: 20px;
+    flex: 0 0 calc(25% - 40px); /* Adjusted to 25% to display 4 members per row */
+    max-width: calc(25% - 40px); /* Adjusted to 25% to display 4 members per row */
+    text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
 
-        .team-member img {
-            width: 100%;
-            border-radius: 50%;
-            border: 4px solid #6a0dad;
-            transition: transform 0.5s ease;
-        }
+/* Ensured uniform size for team member images */
+.team-member img {
+    width: 100%; /* Set image width to 100% */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%;
+    border: 4px solid #6a0dad;
+    transition: transform 0.5s ease;
+}
 
-        .team-member:hover img {
-            transform: scale(1.1); /* Enlarge the image */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Add shadow */
-        }
+.team-member:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
 
         .team-member h3 {
             font-size: 20px;
             margin-top: 10px;
-            color: #73619E;
+            color: #6a0dad;
             transition: color 0.3s ease;
         }
 
@@ -281,31 +252,31 @@ header {
         /* Projects section */
         .project-item {
             margin-bottom: 30px;
-            transition: transform 0.3s ease; /* Added transition for transform */
+            transition: transform 0.3s ease;
         }
 
         .project-item i {
             font-size: 36px;
-            color: rgb(7, 6, 6);
+            color: #373434;
             margin-bottom: 20px;
-            transition: color 0.3s ease, transform 0.3s ease; /* Added transition for transform */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .project-item:hover i {
-            transform: rotate(360deg); /* Rotate icon */
-            color: #ff69b4; /* Change icon color */
+            transform: rotate(360deg);
+            color: #6a0dad;
         }
 
         .project-item h3 {
             font-size: 24px;
-            color: pink;
+            color: #6a0dad;
             margin-bottom: 10px;
             transition: color 0.3s ease;
         }
 
         .project-item p {
             font-size: 18px;
-            color: white;
+            color: #373434;
             transition: color 0.3s ease;
         }
 
@@ -316,26 +287,26 @@ header {
 
         .pricing-item i {
             font-size: 48px;
-            color: rgb(47, 45, 45);
+            color: #373434;
             margin-bottom: 20px;
-            transition: color 0.3s ease, transform 0.3s ease; /* Added transition for transform */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .pricing-item:hover i {
-            transform: rotate(360deg); /* Rotate icon */
-            color: #3b3337; /* Change icon color */
+            transform: rotate(360deg);
+            color: #6a0dad;
         }
 
         .pricing-item h3 {
             font-size: 24px;
-            color: rgb(45, 44, 44);
+            color: #6a0dad;
             margin-bottom: 10px;
             transition: color 0.3s ease;
         }
 
         .pricing-item p {
             font-size: 18px;
-            color: rgb(53, 48, 48);
+            color: #373434;
             transition: color 0.3s ease;
         }
 
@@ -350,21 +321,21 @@ header {
 
         .contact-icons a {
             text-decoration: none;
-            color: #373434; /* White color for icons */
+            color: #373434;
             font-size: 24px;
             margin: 0 10px;
-            transition: color 0.3s ease, transform 0.3s ease; /* Added transition for transform */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .contact-icons a:hover {
-            color: rgb(52, 48, 48); /* Pink color on hover */
-            transform: scale(1.2); /* Scale up on hover */
-        }
+    color: #6a0dad;
+    transform: scale(1.2);
+}
 
         /* Footer */
         footer {
             background-color: #292929;
-            color: #453d3d;
+            color: #fff;
             text-align: center;
             padding: 20px 0;
             position: relative;
@@ -375,17 +346,22 @@ header {
         footer p {
             font-size: 16px;
             margin-bottom: 10px;
-        }
-
-        /* Animation classes */
-        .fade-in {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 1s ease, transform 1s ease;
+            color:white;
         }
 
         /* Media queries */
         @media(max-width: 768px) {
+            .slide {
+                flex-direction: column;
+            }
+
+            .slide .content,
+            .slide img {
+                max-width: 100%;
+                padding: 0;
+                text-align: center;
+            }
+
             .team-member {
                 flex: 0 0 calc(50% - 40px);
                 max-width: calc(50% - 40px);
@@ -398,46 +374,57 @@ header {
                 max-width: calc(100% - 40px);
             }
         }
- </style>
+    </style>
 </head>
 <body>
-  <header class="header-box">
-      <div class="header-content">
-        
-          <nav>
-              <ul>
-                  <li><a href="#about">ABOUT</a></li>
-                  <li><a href="#team">TEAM</a></li>
-                  <li><a href="#projects">PROJECTS</a></li>
-                  <li><a href="#pricing">PRICING</a></li>
-                  <li><a href="#contact">CONTACT US</a></li>
-              </ul>
-          </nav>
-          <div class="logo-container">
-              <!-- Use Django's static template tag to reference the image -->
-              <img src="{% static 'logo.jpg' %}" alt="Interflow AI Logo" onclick="reloadPage()">
-          </div>
-      </div>
-  </header>
-    
+    <header class="header-box">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="{% static 'logo.jpg' %}" alt="Interflow AI Logo" onclick="reloadPage()">
+            </div>
+            <nav>
+                <ul>
+                    
+                    <li><a href="#about" class="nav-link active">About</a></li>
+                    <li><a href="#team" class="nav-link">Team</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <div class="container">
         <div class="slide full-screen" id="home">
-            <div class="container">
-                <h2 style="color: #0e0c0c;">Welcome to INTERFLOW.AI</h2>
-                <p style="color: #fff;">We are Interflow AI, a leading provider of AI-based web applications and products. Our mission is to harness the power of artificial intelligence to create innovative solutions that drive business growth and enhance user experiences.</p>
-                <p style="color: #fff;">Whether you need AI-powered chatbots, predictive analytics, or custom machine learning models, we have the expertise and technology to deliver tailored solutions to meet your unique needs.</p>
-                <p style="color: #fff;">Explore our website to learn more about our services, team, pricing, and how to get in touch with us. We look forward to helping you unlock the full potential of artificial intelligence for your business!</p>
+            <div class="content">
+                <h2>Welcome to INTERFLOW.AI</h2>
+                <p>We are Interflow AI, a leading provider of AI-based web applications and products. Explore our website to learn more about our services, team, pricing, and how to get in touch with us. We look forward to helping you unlock the full potential of artificial intelligence for your business!</p>
+            </div>
+            <div class="slideshow-container">
+                <img src="{% static 'welcome img 1.jpeg' %}" class="active" alt="Welcome Image 1">
+                <img src="{% static 'welcome img 2.jpeg' %}" alt="Welcome Image 2">
+                <img src="{% static 'welcome img 3.jpeg' %}" alt="Welcome Image 3">
             </div>
         </div>
         
+        
+        
         <div class="section" id="about">
             <h1>About Us</h1>
-            <p style="color: #fff;">INTERFLOW.AI is a cutting-edge technology company specializing in artificial intelligence solutions for businesses. We leverage the latest advancements in AI to develop innovative products and services that help our clients stay ahead in today's competitive market.</p>
-            <p style="color: #fff;">Our team of experienced AI engineers and developers is dedicated to delivering high-quality solutions that meet the unique needs of each client. Whether you're looking for chatbots, predictive analytics, or machine learning models, we've got you covered.</p>
-            <p style="color: #fff;">At INTERFLOW.AI, we're passionate about harnessing the power of AI to drive business growth and enhance user experiences. Contact us today to learn more about how we can help your business thrive!</p>
+            <div class="slide full-screen">
+                <div class="content">
+                    <p>INTERFLOW.AI specializes in AI solutions for businesses, utilizing cutting-edge technology to stay ahead in the market. Our experienced team delivers tailored chatbots, predictive analytics, and machine learning models. We're passionate about driving business growth and enhancing user experiences. Contact us to learn more!</p>
+                </div>
+                <div class="slideshow-container">
+                    <img src="{% static 'about us img 1.jpeg' %}" class="active" alt="About Image 1">
+                    <img src="{% static 'about us img 2.jpeg' %}" alt="About Image 2">
+                    <img src="{% static 'about us img 3.jpeg' %}" alt="About Image 3">
+                </div>
+            </div>
         </div>
-
+        
+        <!-- Team Section -->
         <div class="section" id="team">
             <h1>Our Team</h1>
             <div class="team-members">
@@ -461,15 +448,12 @@ header {
                     <h3>Vigneshwar</h3>
                     <p>UX Designer</p>
                 </div>
-                <div class="team-member">
-                    <img src="C:\Users\Admin\OneDrive\Documents\Vigneshwar.jpg" alt="Team Member 5">
-                    <h3>David Wilson</h3>
-                    <p>Data Scientist</p>
-                </div>
+               
             </div>
         </div>
 
-        <div class="section" id="projects">
+        <!-- Projects Section -->
+        <div id="projects" class="section">
             <h1>Our Projects</h1>
             <div class="project-item">
                 <i class="fas fa-laptop-code"></i>
@@ -488,8 +472,9 @@ header {
             </div>
         </div>
 
-        <div class="section" id="pricing">
-            <h1>Our Pricing</h1>
+        <!-- Pricing Section -->
+        <div id="pricing" class="section">
+            <h1>Pricing</h1>
             <div class="pricing-item">
                 <i class="fas fa-dollar-sign"></i>
                 <h3>Starter Plan</h3>
@@ -507,9 +492,10 @@ header {
             </div>
         </div>
 
-        <div class="section" id="contact">
+        <!-- Contact Section -->
+        <div id="contact" class="section">
             <h1>Contact Us</h1>
-            <p style="color: #373434;">Ready to take your business to the next level with AI? Contact us today to discuss your project requirements and get a free consultation.</p>
+            <p>Have questions or need more information? Reach out to us through our social media channels or send us an email.</p>
             <div class="contact-icons">
                 <a href="#"><i class="fas fa-envelope"></i></a>
                 <a href="#"><i class="fas fa-phone"></i></a>
@@ -526,135 +512,93 @@ header {
     </footer>
 
     <script>
-        // Function to set active state and style for clicked option
-    function setActive(element) {
-        // Remove active class from all other options
-        document.querySelectorAll('nav ul li a').forEach(item => {
-            item.classList.remove('active');
-        });
-        // Add active class to clicked option
-        element.classList.add('active');
-    }
-
-    // Change title color every second
-    setInterval(changeTitleColor, 1000);
-
-    function changeTitleColor() {
-        const title = document.getElementById('logo');
-        // Generate random RGB color values
-        const r = Math.floor(Math.random() * 256);
-        const g = Math.floor(Math.random() * 256);
-        const b = Math.floor(Math.random() * 256);
-        // Apply color to title
-        title.style.color = `rgb(${r}, ${g}, ${b})`;
-    }
-         function reloadPage() {
-        location.reload();
-    }
-
-    document.querySelectorAll('.title, .logo-container img').forEach(element => {
-        element.addEventListener('mouseover', function() {
-            this.style.transform = 'scale(1.1)';
-            this.style.transition = 'transform 0.3s ease';
-            this.style.cursor = 'pointer';
-        });
-
-        element.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-            this.style.transition = 'transform 0.3s ease';
-        });
-    });
-        // Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-// Add or remove scrolled class based on scroll position
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('.header-box');
-    if (window.scrollY > 0) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
-// Slide show effect on scroll
-window.addEventListener('scroll', function() {
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach((slide, index) => {
-        const slideTop = slide.getBoundingClientRect().top;
-        if (slideTop < window.innerHeight * 0.5) {
-            slide.classList.add('active');
-        } else {
-            slide.classList.remove('active');
-        }
-    });
-});
-
-// Header animation on scroll
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    header.classList.toggle('scrolled', window.scrollY > 0);
-});
-
-// Intersection Observer API to animate sections
-const sections = document.querySelectorAll('.section');
-
-const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.5
-};
-
-const observer = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, options);
-
-sections.forEach(section => {
-    observer.observe(section);
-});
-
-// Add hover effect for contact icons
-document.querySelectorAll('.contact-icons a').forEach(icon => {
-    icon.addEventListener('mouseover', function() {
-        this.style.transform = 'scale(1.2)'; // Scale up on hover
-        this.style.color = 'pink'; // Change color on hover
-    });
-
-    icon.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)'; // Reset scale on mouse leave
-        this.style.color = '#fff'; // Reset color on mouse leave
-    });
-});
- // Create stars
- function createStars() {
-            const container = document.createElement('div');
-            container.classList.add('stars-container');
-            document.body.appendChild(container);
-
-            for (let i = 0; i < 50; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                star.style.left = `${Math.random() * 100}vw`;
-                star.style.top = `${Math.random() * 100}vh`;
-                star.style.animationDelay = `${Math.random() * 5}s`;
-                container.appendChild(star);
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            const sections = document.querySelectorAll('.section');
+    
+            // Smooth scrolling function
+            function smoothScroll(target) {
+                const targetSection = document.querySelector(target);
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
             }
+    
+            // Function to set active link based on scroll position
+            function setActiveLink() {
+                let index = sections.length;
+                while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+                navLinks.forEach((link) => link.classList.remove('active'));
+                navLinks[index].classList.add('active');
+            }
+    
+            // Function to show sections when they come into view
+            function showSections() {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    if (sectionTop < window.innerHeight - 150) {
+                        section.classList.add('visible');
+                    }
+                });
+            }
+    
+            // Function to adjust header appearance based on scroll position
+            function adjustHeader() {
+                const header = document.querySelector('.header-box');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+    
+            // Initial setup
+            setActiveLink();
+            showSections();
+            adjustHeader();
+    
+            // Event listeners for scroll and nav link clicks
+            window.addEventListener('scroll', function() {
+                setActiveLink();
+                showSections();
+                adjustHeader();
+            });
+    
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default anchor link behavior
+                    const target = this.getAttribute('href'); // Get the target section from href attribute
+                    smoothScroll(target); // Smoothly scroll to the target section
+                });
+            });
+        });
+    
+        function reloadPage() {
+            window.location.reload();
         }
-
-        // Initialize glitter effect
-        createStars();
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const slideshows = document.querySelectorAll('.slideshow-container');
+    
+            slideshows.forEach(slideshow => {
+                let slideIndex = 0;
+                const slides = slideshow.querySelectorAll('img');
+                const totalSlides = slides.length;
+    
+                function showSlides() {
+                    slides.forEach(slide => slide.style.display = 'none');
+                    slideIndex = (slideIndex + 1) % totalSlides;
+                    slides[slideIndex].style.display = 'block';
+                }
+    
+                showSlides();
+    
+                setInterval(showSlides, 3000);
+            });
+        });
+    </script>
+    
     </script>
 </body>
 </html>
