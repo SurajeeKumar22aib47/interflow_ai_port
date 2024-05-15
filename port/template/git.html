@@ -384,11 +384,12 @@
             </div>
             <nav>
                 <ul>
+                    
                     <li><a href="#about" class="nav-link active">About</a></li>
                     <li><a href="#team" class="nav-link">Team</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#pricing" class="nav-link">Pricing</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    
                 </ul>
             </nav>
         </div>
@@ -514,14 +515,25 @@
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('nav ul li a');
             const sections = document.querySelectorAll('.section');
-
+    
+            // Smooth scrolling function
+            function smoothScroll(target) {
+                const targetSection = document.querySelector(target);
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+    
+            // Function to set active link based on scroll position
             function setActiveLink() {
                 let index = sections.length;
                 while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
                 navLinks.forEach((link) => link.classList.remove('active'));
                 navLinks[index].classList.add('active');
             }
-
+    
+            // Function to show sections when they come into view
             function showSections() {
                 sections.forEach(section => {
                     const sectionTop = section.getBoundingClientRect().top;
@@ -530,7 +542,8 @@
                     }
                 });
             }
-
+    
+            // Function to adjust header appearance based on scroll position
             function adjustHeader() {
                 const header = document.querySelector('.header-box');
                 if (window.scrollY > 50) {
@@ -539,43 +552,53 @@
                     header.classList.remove('scrolled');
                 }
             }
-
+    
+            // Initial setup
             setActiveLink();
             showSections();
             adjustHeader();
-
+    
+            // Event listeners for scroll and nav link clicks
             window.addEventListener('scroll', function() {
                 setActiveLink();
                 showSections();
                 adjustHeader();
             });
+    
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default anchor link behavior
+                    const target = this.getAttribute('href'); // Get the target section from href attribute
+                    smoothScroll(target); // Smoothly scroll to the target section
+                });
+            });
         });
-
+    
         function reloadPage() {
             window.location.reload();
         }
-        
-        
+    
         document.addEventListener('DOMContentLoaded', function() {
-    const slideshows = document.querySelectorAll('.slideshow-container');
-
-    slideshows.forEach(slideshow => {
-        let slideIndex = 0;
-        const slides = slideshow.querySelectorAll('img');
-        const totalSlides = slides.length;
-
-        function showSlides() {
-            slides.forEach(slide => slide.style.display = 'none');
-            slideIndex = (slideIndex + 1) % totalSlides;
-            slides[slideIndex].style.display = 'block';
-        }
-
-        showSlides();
-
-        setInterval(showSlides, 3000);
-    });
-});
-
+            const slideshows = document.querySelectorAll('.slideshow-container');
+    
+            slideshows.forEach(slideshow => {
+                let slideIndex = 0;
+                const slides = slideshow.querySelectorAll('img');
+                const totalSlides = slides.length;
+    
+                function showSlides() {
+                    slides.forEach(slide => slide.style.display = 'none');
+                    slideIndex = (slideIndex + 1) % totalSlides;
+                    slides[slideIndex].style.display = 'block';
+                }
+    
+                showSlides();
+    
+                setInterval(showSlides, 3000);
+            });
+        });
+    </script>
+    
     </script>
 </body>
 </html>

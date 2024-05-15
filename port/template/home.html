@@ -25,85 +25,87 @@
             overflow-x: hidden;
         }
 
-        /* Header styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10%;
-            padding: 15px 0;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease, padding 0.3s ease;
-        }
+       /* Header styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 17%;
+    padding: 0 20px; /* Adjusted padding */
+    z-index: 1000;
+    background: url('{% static 'bghead1.jpeg' %}') no-repeat center center/cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
 
-        .header-box.scrolled {
-            padding: 10px 0;
-            background-color: rgba(255, 255, 255, 1);
-        }
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.logo-container img {
+    width: 80px;
+    height: 100%; /* Adjusted height to fill the header vertically */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
-        .logo-container img {
-            width: 80px;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+.logo-container img[alt="Interflow title"] {
+    width: auto; /* Allow the image to adjust its width */
+    height: 120px; /* Set the desired height */
+    margin-top: 10px; /* Adjust margin to align vertically */
+}
 
-        .logo-container img:hover {
-            transform: scale(1.1);
-        }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
 
-        nav ul li {
-            margin: 0 20px;
-        }
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Align nav items vertically */
+}
 
-        nav ul li a {
-            text-decoration: none;
-            color: #373434;
-            font-size: 16px;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+nav ul li {
+    margin: 0 20px;
+}
 
-        nav ul li a:hover {
-    color: #6a0dad;}
+nav ul li a {
+    text-decoration: none;
+    color: #373434;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-        nav ul li a.active {
-            background-color: #6a0dad;
-            color: #fff;
-            border-radius: 5px;
-            padding: 8px 15px;
-        }
+nav ul li a:hover {
+    color: #6a0dad;
+}
 
-        .title {
-            font-size: 36px;
-            color: #030303;
-            font-family: 'Montserrat', sans-serif;
-            cursor: pointer;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
+nav ul li a.active {
+    background-color: #6a0dad;
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 15px;
+}
 
-        .title:hover {
-            transform: scale(1.1);
-            color: #6a0dad;
-        }
+.title {
+    font-size: 36px;
+    color: #030303;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.title:hover {
+    transform: scale(1.1);
+    color: #6a0dad;
+}
+
 
         /* Main container */
         .container {
@@ -152,25 +154,46 @@
 }
 
 /* Ensured the images in the slideshow match the content's width */
+/* Adjust slideshow container */
 .slideshow-container {
     position: relative;
-    width: 100%; /* Set to 100% to match content width */
-    max-width: 1000px; /* Maximum width to match content */
+    width: 100%;
+    max-width: 1000px;
     margin: auto;
-    border-radius: 10px;
-    overflow: hidden;
+    overflow: hidden; /* Ensure images don't overflow their containers */
 }
 
+/* Ensure landscape orientation for images */
+/* Ensure landscape orientation for images */
+/* Ensure landscape orientation for images */
 .slideshow-container img {
-    width: 100%;
-    display: none;
-    border-radius: 10px; /* Apply border radius to images */
+    max-width: 200%; /* Increase the width */
+    max-height: 200%; /* Maintain aspect ratio */
+    object-fit: cover;
 }
+
+
+
 
 .slideshow-container img.active {
     display: block;
 }
+/* Aspect ratio for landscape images */
+.aspect-ratio-box {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
 
+.aspect-ratio-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* Remove the prev/next button styles */
 .prev, .next {
@@ -225,12 +248,14 @@
 
 /* Ensured uniform size for team member images */
 .team-member img {
-    width: 100%; /* Set image width to 100% */
-    height: auto; /* Maintain aspect ratio */
+    width: 150px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover;
     border-radius: 50%;
     border: 4px solid #6a0dad;
     transition: transform 0.5s ease;
 }
+
 
 .team-member:hover img {
     transform: scale(1.1);
@@ -378,9 +403,11 @@
 </head>
 <body>
     <header class="header-box">
+        
         <div class="header-content">
             <div class="logo-container">
-                <img src="{% static 'logo.jpg' %}" alt="Interflow AI Logo" onclick="reloadPage()">
+                <img src="{% static 'logo - nb.png' %}" alt="Interflow AI Logo" onclick="reloadPage()">
+                <img src="{% static 'interflow title - nb.png' %}" alt="Interflow title" onclick="reloadPage()">
             </div>
             <nav>
                 <ul>
@@ -389,6 +416,7 @@
                     <li><a href="#team" class="nav-link">Team</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                     
                 </ul>
             </nav>
@@ -402,24 +430,25 @@
                 <p>We are Interflow AI, a leading provider of AI-based web applications and products. Explore our website to learn more about our services, team, pricing, and how to get in touch with us. We look forward to helping you unlock the full potential of artificial intelligence for your business!</p>
             </div>
             <div class="slideshow-container">
-                <img src="{% static 'welcome img 1.jpeg' %}" class="active" alt="Welcome Image 1">
-                <img src="{% static 'welcome img 2.jpeg' %}" alt="Welcome Image 2">
-                <img src="{% static 'welcome img 3.jpeg' %}" alt="Welcome Image 3">
+                <img src="{% static 'welcome ls 1.jpeg' %}" class="active" alt="Welcome Image 1">
+                <img src="{% static 'welcome ls 2.jpeg' %}" class="active" alt="Welcome Image 2">
+                <img src="{% static 'welcome ls 3.jpeg' %}" class="active" alt="Welcome Image 3">
             </div>
         </div>
         
         
         
         <div class="section" id="about">
-            <h1>About Us</h1>
+            
             <div class="slide full-screen">
                 <div class="content">
+                    <h1>About Us</h1>
                     <p>INTERFLOW.AI specializes in AI solutions for businesses, utilizing cutting-edge technology to stay ahead in the market. Our experienced team delivers tailored chatbots, predictive analytics, and machine learning models. We're passionate about driving business growth and enhancing user experiences. Contact us to learn more!</p>
                 </div>
                 <div class="slideshow-container">
-                    <img src="{% static 'about us img 1.jpeg' %}" class="active" alt="About Image 1">
-                    <img src="{% static 'about us img 2.jpeg' %}" alt="About Image 2">
-                    <img src="{% static 'about us img 3.jpeg' %}" alt="About Image 3">
+                    <img src="{% static 'about ls 1.jpeg' %}" class="active" alt="About Image 1">
+                    <img src="{% static 'about ls 2.jpeg' %}" class="active" alt="About Image 2">
+                    <img src="{% static 'about ls 3.jpeg' %}" class="active" alt="About Image 3">
                 </div>
             </div>
         </div>
@@ -496,6 +525,7 @@
         <div id="contact" class="section">
             <h1>Contact Us</h1>
             <p>Have questions or need more information? Reach out to us through our social media channels or send us an email.</p>
+            
             <div class="contact-icons">
                 <a href="#"><i class="fas fa-envelope"></i></a>
                 <a href="#"><i class="fas fa-phone"></i></a>
@@ -579,24 +609,31 @@
         }
     
         document.addEventListener('DOMContentLoaded', function() {
-            const slideshows = document.querySelectorAll('.slideshow-container');
-    
-            slideshows.forEach(slideshow => {
-                let slideIndex = 0;
-                const slides = slideshow.querySelectorAll('img');
-                const totalSlides = slides.length;
-    
-                function showSlides() {
-                    slides.forEach(slide => slide.style.display = 'none');
-                    slideIndex = (slideIndex + 1) % totalSlides;
-                    slides[slideIndex].style.display = 'block';
-                }
-    
-                showSlides();
-    
-                setInterval(showSlides, 3000);
-            });
-        });
+    setTimeout(function() {
+        const welcomeSlide = document.querySelector('#home');
+        welcomeSlide.style.opacity = '1';
+        welcomeSlide.style.transform = 'translateY(0)';
+    }, 1000); // Delay the execution by 1 second (1000 milliseconds)
+
+    const slideshows = document.querySelectorAll('.slideshow-container');
+
+    slideshows.forEach(slideshow => {
+        let slideIndex = 0;
+        const slides = slideshow.querySelectorAll('img');
+        const totalSlides = slides.length;
+
+        function showSlides() {
+            slides.forEach(slide => slide.style.display = 'none');
+            slideIndex = (slideIndex + 1) % totalSlides;
+            slides[slideIndex].style.display = 'block';
+        }
+
+        showSlides();
+
+        setInterval(showSlides, 6000);
+    });
+});
+
     </script>
     
     </script>

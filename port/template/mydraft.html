@@ -27,13 +27,15 @@
 
         /* Header styles */
         header {
+            
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+            height: 10%;
             padding: 15px 0;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.9);
+            background: url('{% static 'bghead1.jpeg' %}') no-repeat center center/cover; /* Added background image */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease, padding 0.3s ease;
         }
@@ -82,8 +84,7 @@
         }
 
         nav ul li a:hover {
-            color: #6a0dad;
-        }
+    color: #6a0dad;}
 
         nav ul li a.active {
             background-color: #6a0dad;
@@ -144,6 +145,40 @@
             height: auto;
             border-radius: 10px;
         }
+/* Slideshow container */
+/* Adjusted slide content and image width to 100% for better alignment */
+.slide .content,
+.slide img {
+    width: 100%;
+}
+
+/* Ensured the images in the slideshow match the content's width */
+.slideshow-container {
+    position: relative;
+    width: 100%; /* Set to 100% to match content width */
+    max-width: 1000px; /* Maximum width to match content */
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slideshow-container img {
+    width: 100%;
+    display: none;
+    border-radius: 10px; /* Apply border radius to images */
+}
+
+.slideshow-container img.active {
+    display: block;
+}
+
+
+/* Remove the prev/next button styles */
+.prev, .next {
+    display: none; /* Hide the navigation buttons */
+}
+
+
 
         h1 {
             font-size: 36px;
@@ -180,25 +215,28 @@
             margin-top: 50px;
         }
 
-        .team-member {
-            margin: 20px;
-            flex: 0 0 calc(20% - 40px);
-            max-width: calc(20% - 40px);
-            text-align: center;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
+       /* Team section */
+.team-member {
+    margin: 20px;
+    flex: 0 0 calc(25% - 40px); /* Adjusted to 25% to display 4 members per row */
+    max-width: calc(25% - 40px); /* Adjusted to 25% to display 4 members per row */
+    text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
 
-        .team-member img {
-            width: 100%;
-            border-radius: 50%;
-            border: 4px solid #6a0dad;
-            transition: transform 0.5s ease;
-        }
+/* Ensured uniform size for team member images */
+.team-member img {
+    width: 100%; /* Set image width to 100% */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%;
+    border: 4px solid #6a0dad;
+    transition: transform 0.5s ease;
+}
 
-        .team-member:hover img {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        }
+.team-member:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
 
         .team-member h3 {
             font-size: 20px;
@@ -291,9 +329,9 @@
         }
 
         .contact-icons a:hover {
-            color: #6a0dad;
-            transform: scale(1.2);
-        }
+    color: #6a0dad;
+    transform: scale(1.2);
+}
 
         /* Footer */
         footer {
@@ -341,17 +379,19 @@
 </head>
 <body>
     <header class="header-box">
+        
         <div class="header-content">
             <div class="logo-container">
                 <img src="{% static 'logo.jpg' %}" alt="Interflow AI Logo" onclick="reloadPage()">
             </div>
             <nav>
                 <ul>
+                    
                     <li><a href="#about" class="nav-link active">About</a></li>
                     <li><a href="#team" class="nav-link">Team</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#pricing" class="nav-link">Pricing</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    
                 </ul>
             </nav>
         </div>
@@ -361,19 +401,31 @@
         <div class="slide full-screen" id="home">
             <div class="content">
                 <h2>Welcome to INTERFLOW.AI</h2>
-                <p>We are Interflow AI, a leading provider of AI-based web applications and products. Our mission is to harness the power of artificial intelligence to create innovative solutions that drive business growth and enhance user experiences.</p>
-                <p>Whether you need AI-powered chatbots, predictive analytics, or custom machine learning models, we have the expertise and technology to deliver tailored solutions to meet your unique needs.</p>
-                <p>Explore our website to learn more about our services, team, pricing, and how to get in touch with us. We look forward to helping you unlock the full potential of artificial intelligence for your business!</p>
+                <p>We are Interflow AI, a leading provider of AI-based web applications and products. Explore our website to learn more about our services, team, pricing, and how to get in touch with us. We look forward to helping you unlock the full potential of artificial intelligence for your business!</p>
             </div>
-            <img src="{% static 'your-image.jpg' %}" alt="Welcome Image">
+            <div class="slideshow-container">
+                <img src="{% static 'welcome img 1.jpeg' %}" class="active" alt="Welcome Image 1">
+                <img src="{% static 'welcome img 2.jpeg' %}" alt="Welcome Image 2">
+                <img src="{% static 'welcome img 3.jpeg' %}" alt="Welcome Image 3">
+            </div>
         </div>
+        
+        
         
         <div class="section" id="about">
             <h1>About Us</h1>
-            <p>INTERFLOW.AI is a cutting-edge technology company specializing in artificial intelligence solutions for businesses. We leverage the latest advancements in AI to develop innovative products and services that help our clients stay ahead in today's competitive market.</p>
-            <p>Our team of experienced AI engineers and developers is dedicated to delivering high-quality solutions that meet the unique needs of each client. Whether you're looking for chatbots, predictive analytics, or machine learning models, we've got you covered.</p>
-            <p>At INTERFLOW.AI, we're passionate about harnessing the power of AI to drive business growth and enhance user experiences. Contact us today to learn more about how we can help your business thrive!</p>
+            <div class="slide full-screen">
+                <div class="content">
+                    <p>INTERFLOW.AI specializes in AI solutions for businesses, utilizing cutting-edge technology to stay ahead in the market. Our experienced team delivers tailored chatbots, predictive analytics, and machine learning models. We're passionate about driving business growth and enhancing user experiences. Contact us to learn more!</p>
+                </div>
+                <div class="slideshow-container">
+                    <img src="{% static 'about us img 1.jpeg' %}" class="active" alt="About Image 1">
+                    <img src="{% static 'about us img 2.jpeg' %}" alt="About Image 2">
+                    <img src="{% static 'about us img 3.jpeg' %}" alt="About Image 3">
+                </div>
+            </div>
         </div>
+        
         <!-- Team Section -->
         <div class="section" id="team">
             <h1>Our Team</h1>
@@ -398,11 +450,7 @@
                     <h3>Vigneshwar</h3>
                     <p>UX Designer</p>
                 </div>
-                <div class="team-member">
-                    <img src="C:\Users\Admin\OneDrive\Documents\Vigneshwar.jpg" alt="Team Member 5">
-                    <h3>David Wilson</h3>
-                    <p>Data Scientist</p>
-                </div>
+               
             </div>
         </div>
 
@@ -451,12 +499,30 @@
             <h1>Contact Us</h1>
             <p>Have questions or need more information? Reach out to us through our social media channels or send us an email.</p>
             <div class="contact-icons">
-                <a href="#"><i class="fas fa-envelope"></i></a>
-                <a href="#"><i class="fas fa-phone"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>interflow.ai@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+91 8248564527</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-twitter"></i>
+                    <p>@Interflow_AI</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <p>@Interflow_AI</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <p>@Interflow_AI</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <p>@Interflow_AI</p>
+                </div>
             </div>
         </div>
     </div>
@@ -469,14 +535,25 @@
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('nav ul li a');
             const sections = document.querySelectorAll('.section');
-
+    
+            // Smooth scrolling function
+            function smoothScroll(target) {
+                const targetSection = document.querySelector(target);
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+    
+            // Function to set active link based on scroll position
             function setActiveLink() {
                 let index = sections.length;
                 while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
                 navLinks.forEach((link) => link.classList.remove('active'));
                 navLinks[index].classList.add('active');
             }
-
+    
+            // Function to show sections when they come into view
             function showSections() {
                 sections.forEach(section => {
                     const sectionTop = section.getBoundingClientRect().top;
@@ -485,7 +562,8 @@
                     }
                 });
             }
-
+    
+            // Function to adjust header appearance based on scroll position
             function adjustHeader() {
                 const header = document.querySelector('.header-box');
                 if (window.scrollY > 50) {
@@ -494,21 +572,53 @@
                     header.classList.remove('scrolled');
                 }
             }
-
+    
+            // Initial setup
             setActiveLink();
             showSections();
             adjustHeader();
-
+    
+            // Event listeners for scroll and nav link clicks
             window.addEventListener('scroll', function() {
                 setActiveLink();
                 showSections();
                 adjustHeader();
             });
+    
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default anchor link behavior
+                    const target = this.getAttribute('href'); // Get the target section from href attribute
+                    smoothScroll(target); // Smoothly scroll to the target section
+                });
+            });
         });
-
+    
         function reloadPage() {
             window.location.reload();
         }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const slideshows = document.querySelectorAll('.slideshow-container');
+    
+            slideshows.forEach(slideshow => {
+                let slideIndex = 0;
+                const slides = slideshow.querySelectorAll('img');
+                const totalSlides = slides.length;
+    
+                function showSlides() {
+                    slides.forEach(slide => slide.style.display = 'none');
+                    slideIndex = (slideIndex + 1) % totalSlides;
+                    slides[slideIndex].style.display = 'block';
+                }
+    
+                showSlides();
+    
+                setInterval(showSlides, 9000);
+            });
+        });
+    </script>
+    
     </script>
 </body>
 </html>
