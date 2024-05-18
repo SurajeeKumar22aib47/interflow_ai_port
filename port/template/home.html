@@ -110,7 +110,7 @@ nav ul li a.active {
 
         /* Main container */
         .container {
-            max-width: 900px;
+            max-width: none;
             margin: 120px auto 50px;
             text-align: center;
             padding: 0 20px;
@@ -275,36 +275,48 @@ nav ul li a.active {
             transition: color 0.3s ease;
         }
 
-        /* Projects section */
-        .project-item {
-            margin-bottom: 30px;
-            transition: transform 0.3s ease;
-        }
+       /* Projects Section */
+#projects .project-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
 
-        .project-item i {
-            font-size: 36px;
-            color: #373434;
-            margin-bottom: 20px;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+#projects .project-item {
+    width: calc(30% - 20px); /* Adjusted width to fit three items horizontally */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .project-item:hover i {
-            transform: rotate(360deg);
-            color: #6a0dad;
-        }
+#projects .project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-        .project-item h3 {
-            font-size: 24px;
-            color: #6a0dad;
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
+#projects .project-item i {
+    font-size: 36px;
+    color: #6a0dad;
+    margin-bottom: 20px;
+    display: block;
+   
+}
+.project-item:hover i {
+    transform: rotate(360deg); /* Rotate the icon 360 degrees on hover */
+    color: #4c137a; /* Change the color of the icon on hover */
+}
+#projects .project-item h3 {
+    font-size: 20px;
+    color: #6a0dad;
+    margin-bottom: 10px;
+}
 
-        .project-item p {
-            font-size: 18px;
-            color: #373434;
-            transition: color 0.3s ease;
-        }
+#projects .project-item p {
+    font-size: 16px;
+    color: #373434;
+}
 
         /* Pricing section */
         .pricing-item {
@@ -336,43 +348,249 @@ nav ul li a.active {
             transition: color 0.3s ease;
         }
 
-        /* Contact icon styles */
-        .contact-icons {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .contact-icons a {
-            text-decoration: none;
-            color: #373434;
-            font-size: 24px;
-            margin: 0 10px;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .contact-icons a:hover {
-    color: #6a0dad;
-    transform: scale(1.2);
+        /* Contact Us Section */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding: 0 20px;
 }
 
-        /* Footer */
-        footer {
-            background-color: #292929;
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+}
+
+.contact-item button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 10px; /* Add margin between the icon button and the content */
+}
+
+.contact-item button:focus {
+    outline: none;
+}
+
+.contact-item p {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-item i {
+    margin-bottom: 20px;
+    color: #6a0dad;
+    font-size: 24px;
+}
+
+
+
+/* Add space between icon and content */
+.contact-info p i {
+    margin-right: 10px;
+}
+
+/* Adjust margin between icon and content */
+.contact-info p span {
+    margin-right: 10px;
+}
+
+.contact-form {
+    flex: 1;
+    max-width: 45%;
+    padding: 20px;
+    background: linear-gradient(to bottom, #A894D5, #C4AEF2, #E0CAFF, #FDE6FF); /* Match form color to page gradient */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 20px; /* Add margin to separate from other sections */
+}
+
+.contact-form:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #6a0dad;
+}
+
+.contact-form .form-group {
+    margin-bottom: 15px; /* Adjust vertical spacing between form groups */
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.8); /* Make input background slightly transparent */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #6a0dad;
+    box-shadow: 0 0 5px rgba(106, 13, 173, 0.5);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 70px; /* Reduce minimum height of textarea */
+}
+
+.contact-form button {
+    display: inline-block;
+    padding: 14px 30px;
+    background-color: #6a0dad;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #4c137a;
+    transform: translateY(-2px);
+}
+
+.contact-form button:active {
+    transform: translateY(0);
+}
+
+
+/* Media Queries */
+@media(max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .contact-form {
+        max-width: 100%;
+    }
+}
+
+
+
+       /* Footer styles */
+       footer {
+            background-color:none;
             color: #fff;
+            padding: 40px 20px;
             text-align: center;
-            padding: 20px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            font-family: 'Open Sans', sans-serif;
         }
 
-        footer p {
-            font-size: 16px;
-            margin-bottom: 10px;
-            color:white;
+        footer .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        footer .footer-logo img {
+            margin-right: 10px;
+        }
+
+        footer .footer-logo span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        footer .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer .footer-content p {
+           margin-bottom: 0%;
+            color:black;
+        }
+
+        footer .footer-content a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-content a:hover {
+            color: #ddd;
+        }
+
+        footer .footer-social {
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        footer .footer-social a {
+            color: #6a0dad;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-social a:hover {
+            color: #4c137a;
+        }
+
+        footer .footer-contact {
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* Button styles */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #6a0dad;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #4c137a;
+            transform: scale(1.1);
+        }
+
+        /* Animation styles */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Media queries */
@@ -443,7 +661,7 @@ nav ul li a.active {
             
             <div class="slide full-screen">
                 <div class="content">
-                    <h1>About Us</h1>
+                    <h1 style="text-align: center ;">About Us</h1>
                     <p>INTERFLOW AI specializes in AI solutions for businesses, utilizing cutting-edge technology to stay ahead in the market. Our experienced team delivers tailored chatbots, predictive analytics, and machine learning models. We're passionate about driving business growth and enhancing user experiences. Contact us to learn more!</p>
                 </div>
                 <div class="slideshow-container">
@@ -483,29 +701,44 @@ nav ul li a.active {
                     <h3>Prajith</h3>
                     <p>Lead Developer</p>
                 </div>
+                <div class="team-member">
+                    <img src="{% static 'prakash.png' %}" alt="Team Member 3">
+                    <h3>Prakash</h3>
+                    <p>Lead Developer</p>
+                </div>
                
             </div>
         </div>
 
-        <!-- Projects Section -->
-        <div id="projects" class="section">
-            <h1>Our Projects</h1>
-            <div class="project-item">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Chatbot Development</h3>
-                <p>AI-powered chatbots for automating customer support and improving user engagement.</p>
-            </div>
-            <div class="project-item">
-                <i class="fas fa-chart-line"></i>
-                <h3>Predictive Analytics</h3>
-                <p>Advanced analytics solutions for predicting trends, forecasting sales, and optimizing business strategies.</p>
-            </div>
-            <div class="project-item">
-                <i class="fas fa-robot"></i>
-                <h3>Machine Learning Models</h3>
-                <p>Custom machine learning models for solving complex business problems and extracting insights from data.</p>
-            </div>
+         <!-- Projects Section -->
+<!-- Projects Section -->
+<div id="projects" class="section">
+    <h1 style="text-align: center; text-decoration: underline;">Our Projects</h1>
+    <div class="project-container">
+        <div class="project-item">
+            <i class="fas fa-robot"></i>
+            <h3>Chatbot Development</h3>
+            <p>AI-powered chatbots for automating customer support and improving user engagement.</p>
+            
         </div>
+        <div class="project-item">
+            <i class="fas fa-chart-line"></i>
+            <h3>Predictive Analytics</h3>
+            <p>Advanced analytics solutions for predicting trends, forecasting sales, and optimizing business strategies.</p>
+           
+        </div>
+        <div class="project-item">
+            <i class="fas fa-brain"></i>
+            <h3>Machine Learning Models</h3>
+            <p>Custom machine learning models for solving complex business problems and extracting insights from data.</p>
+            
+        </div>
+    </div>
+    
+   
+</div>
+
+
 
         <!-- Pricing Section -->
         <div id="pricing" class="section">
@@ -527,26 +760,65 @@ nav ul li a.active {
             </div>
         </div>
 
-        <!-- Contact Section -->
         <div id="contact" class="section">
-            <h1>Contact Us</h1>
-            <p>Have questions or need more information? Reach out to us through our social media channels or send us an email.</p>
-            
-            <div class="contact-icons">
-                <a href="#"><i class="fas fa-envelope"></i></a>
-                <a href="#"><i class="fas fa-phone"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+            <h1 style="text-align: center; text-decoration: underline;">Contact Us</h1>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <button><i class="fas fa-phone"></i></button>
+                        <p>+123 456 7890</p>
+                    </div>
+                    <div class="contact-item">
+                        <button><i class="fas fa-envelope"></i></button>
+                        <p>info@interflowai.com</p>
+                    </div>
+                </div>
+                
+                
+                <div class="contact-form">
+                    <h2 style="text-align: center;">Send Us a Message</h2>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+        
+               <!-- Slogan Section -->
+        <div class="section" id="slogan">
+            <div style="background-color: rgba(106, 13, 173, 0.5); height: 15vh;">
+            <h1 style="font-size: 80px;color:white;text-align: center;">BELIEVE . INSPIRE . ACHIEVE </h1>
+            </div>
+        </div>
+        <div class="footer-logo">
+            <img src="{% static 'logo - nb.png' %}" alt="Interflow AI Logo" onclick="reloadPage()">
+            <img src="{% static 'interflow title - nb.png' %}" alt="Interflow title" onclick="reloadPage()">
+        
+        
 
-    <footer>
-        <p>&copy; 2024 Interflow AI. All rights reserved.</p>
-    </footer>
-
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+        <div class="footer-content">
+            <p>&copy; 2024 Interflow AI. All rights reserved.</p>
+           
+           
+        </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('nav ul li a');
@@ -639,6 +911,33 @@ nav ul li a.active {
         setInterval(showSlides, 6000);
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(contactForm);
+
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert('Your message has been sent successfully!');
+                contactForm.reset();
+            } else {
+                alert('There was a problem sending your message. Please try again later.');
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+            alert('There was a problem sending your message. Please try again later.');
+        });
+    });
+});
+
 
     </script>
     
