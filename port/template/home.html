@@ -275,48 +275,36 @@ nav ul li a.active {
             transition: color 0.3s ease;
         }
 
-       /* Projects Section */
-#projects .project-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
-}
+        /* Projects section */
+        .project-item {
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
 
-#projects .project-item {
-    width: calc(30% - 20px); /* Adjusted width to fit three items horizontally */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .project-item i {
+            font-size: 36px;
+            color: #373434;
+            margin-bottom: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
 
-#projects .project-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+        .project-item:hover i {
+            transform: rotate(360deg);
+            color: #6a0dad;
+        }
 
-#projects .project-item i {
-    font-size: 36px;
-    color: #6a0dad;
-    margin-bottom: 20px;
-    display: block;
-   
-}
-.project-item:hover i {
-    transform: rotate(360deg); /* Rotate the icon 360 degrees on hover */
-    color: #4c137a; /* Change the color of the icon on hover */
-}
-#projects .project-item h3 {
-    font-size: 20px;
-    color: #6a0dad;
-    margin-bottom: 10px;
-}
+        .project-item h3 {
+            font-size: 24px;
+            color: #6a0dad;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
 
-#projects .project-item p {
-    font-size: 16px;
-    color: #373434;
-}
+        .project-item p {
+            font-size: 18px;
+            color: #373434;
+            transition: color 0.3s ease;
+        }
 
         /* Pricing section */
         .pricing-item {
@@ -546,7 +534,7 @@ nav ul li a.active {
 
         footer .footer-social {
             margin-top: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         footer .footer-social a {
@@ -561,7 +549,7 @@ nav ul li a.active {
         }
 
         footer .footer-contact {
-            margin-top: 40px;
+            margin-top: 20px;
             font-size: 14px;
         }
 
@@ -661,7 +649,7 @@ nav ul li a.active {
             
             <div class="slide full-screen">
                 <div class="content">
-                    <h1 style="text-align: center ;">About Us</h1>
+                    <h1>About Us</h1>
                     <p>INTERFLOW AI specializes in AI solutions for businesses, utilizing cutting-edge technology to stay ahead in the market. Our experienced team delivers tailored chatbots, predictive analytics, and machine learning models. We're passionate about driving business growth and enhancing user experiences. Contact us to learn more!</p>
                 </div>
                 <div class="slideshow-container">
@@ -710,36 +698,25 @@ nav ul li a.active {
             </div>
         </div>
 
-         <!-- Projects Section -->
-<!-- Projects Section -->
-<div id="projects" class="section">
-    <h1 style="text-align: center; text-decoration: underline;">Our Projects</h1>
-    <div class="project-container">
-        <div class="project-item">
-            <i class="fas fa-robot"></i>
-            <h3>Chatbot Development</h3>
-            <p>AI-powered chatbots for automating customer support and improving user engagement.</p>
-            
+        <!-- Projects Section -->
+        <div id="projects" class="section">
+            <h1>Our Projects</h1>
+            <div class="project-item">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Chatbot Development</h3>
+                <p>AI-powered chatbots for automating customer support and improving user engagement.</p>
+            </div>
+            <div class="project-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>Predictive Analytics</h3>
+                <p>Advanced analytics solutions for predicting trends, forecasting sales, and optimizing business strategies.</p>
+            </div>
+            <div class="project-item">
+                <i class="fas fa-robot"></i>
+                <h3>Machine Learning Models</h3>
+                <p>Custom machine learning models for solving complex business problems and extracting insights from data.</p>
+            </div>
         </div>
-        <div class="project-item">
-            <i class="fas fa-chart-line"></i>
-            <h3>Predictive Analytics</h3>
-            <p>Advanced analytics solutions for predicting trends, forecasting sales, and optimizing business strategies.</p>
-           
-        </div>
-        <div class="project-item">
-            <i class="fas fa-brain"></i>
-            <h3>Machine Learning Models</h3>
-            <p>Custom machine learning models for solving complex business problems and extracting insights from data.</p>
-            
-        </div>
-        
-    </div>
-    
-   
-</div>
-
-
 
         <!-- Pricing Section -->
         <div id="pricing" class="section">
@@ -767,18 +744,19 @@ nav ul li a.active {
                 <div class="contact-info">
                     <div class="contact-item">
                         <button><i class="fas fa-phone"></i></button>
-                        <p>+91 9042059598</p>
+                        <p>+123 456 7890</p>
                     </div>
                     <div class="contact-item">
                         <button><i class="fas fa-envelope"></i></button>
-                        <p>interflow.ai@gmail.com</p>
+                        <p>info@interflowai.com</p>
                     </div>
                 </div>
                 
                 
                 <div class="contact-form">
-                    <h2 style="text-align: center;">Send Us a Message</h2>
-                    <form action="#" method="POST">
+                    <h2>Send Us a Message</h2>
+                    <form method="post">
+                        {% csrf_token %}
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -791,7 +769,9 @@ nav ul li a.active {
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
-                        <button type="submit">Send Message</button>
+                        <div class="form-group">
+                            <button type="submit">Send Message</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -799,17 +779,16 @@ nav ul li a.active {
         
                <!-- Slogan Section -->
         <div class="section" id="slogan">
+            
             <div style="background-color: rgba(106, 13, 173, 0.5); height: 15vh;">
-            <h1 style="font-size: 80px;color:white;text-align: center;">BELIEVE . INSPIRE . ACHIEVE </h1>
-            </div>
+                <h1 style="text-align: center; ">BELIEVE . INSPIRE . ACHIEVE</h1></div>
         </div>
-        <div class="footer-logo">
-            <img src="{% static 'logo - nb.png' %}" alt="Interflow AI Logo" onclick="reloadPage()">
-            <img src="{% static 'interflow title - nb.png' %}" alt="Interflow title" onclick="reloadPage()">
         
         
 
         <div class="footer-social">
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fas fa-phone"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>

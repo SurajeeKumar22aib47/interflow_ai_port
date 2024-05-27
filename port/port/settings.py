@@ -124,4 +124,22 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
+# settings.py
+
+# settings.py
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Gmail's SMTP server
+EMAIL_PORT = 587  # The port for TLS
+EMAIL_USE_TLS = True  # Use TLS
+EMAIL_USE_SSL = False  # Do not use SSL
+EMAIL_HOST_USER = 'interflow.ai@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'interflow.ai@1424'  # Your Gmail App Password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+
+
+
