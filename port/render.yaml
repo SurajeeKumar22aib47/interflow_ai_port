@@ -1,6 +1,6 @@
+
 services:
   - type: web
     name: interflow_ai_port
     buildCommand: "./build.sh"
-    env: python
-    startCommand: "$gunicorn interflow_ai_port.wsgi:application"
+    startCommand: "gunicorn interflow_ai_port.wsgi:application"
