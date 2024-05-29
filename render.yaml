@@ -1,6 +1,0 @@
-
-services:
-  - type: web
-    name: port
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn port.wsgi:application"
