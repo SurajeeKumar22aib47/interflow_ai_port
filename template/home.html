@@ -24,6 +24,7 @@
             color: #373434;
             overflow-x: hidden;
         }
+        
 
        /* Header styles */
 header {
@@ -472,14 +473,78 @@ nav ul li a.active {
 }
 
 
-/* Media Queries */
-@media(max-width: 768px) {
-    .contact-container {
+/* Media Queries for Responsiveness */
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .navbar {
+        justify-content: flex-start;
+    }
+
+    .navbar a {
+        padding: 14px 20px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar {
         flex-direction: column;
     }
 
-    .contact-info,
-    .contact-form {
+    .navbar a {
+        padding: 10px;
+        text-align: left;
+    }
+
+    .gallery {
+        flex-direction: row;
+    }
+
+    .gallery img {
+        flex: 1 0 48%; /* Adjust to fit two images per row */
+        max-width: 48%;
+    }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        padding: 10px;
+        text-align: left;
+    }
+
+    .gallery img {
+        flex: 1 0 100%; /* Adjust to fit one image per row */
+        max-width: 100%;
+    }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575px) {
+    .header {
+        padding: 10px;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        padding: 10px;
+        text-align: left;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .gallery img {
+        flex: 1 0 100%; /* Adjust to fit one image per row */
         max-width: 100%;
     }
 }
