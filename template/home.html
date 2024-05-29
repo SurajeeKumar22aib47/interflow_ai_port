@@ -48,19 +48,20 @@ header {
     margin: 0 auto;
 }
 
-.logo-container img {
-    margin-left:0px;
-    width: 80px;
-    height: 100%; /* Adjusted height to fill the header vertically */
-    cursor: pointer;
-    transition: transform 0.3s ease;
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .logo-container img {
+        width: 60px; /* Adjust the width of the logo for smaller screens */
+        height: auto; /* Allow the height to adjust accordingly */
+    }
+
+    .logo-container img[alt="Interflow title"] {
+        width: 150px; /* Adjust the width of the title image for smaller screens */
+        height: auto; /* Allow the height to adjust accordingly */
+        margin-top: 0; /* Reset margin for better alignment */
+    }
 }
 
-.logo-container img[alt="Interflow title"] {
-    width: auto; /* Allow the image to adjust its width */
-    height: 120px; /* Set the desired height */
-    margin-top: 10px; /* Adjust margin to align vertically */
-}
 
 
 
