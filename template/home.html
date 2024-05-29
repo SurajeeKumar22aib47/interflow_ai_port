@@ -47,12 +47,42 @@ header {
     max-width: 1200px;
     margin: 0 auto;
 }
+.navigation {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-/* Media query for smaller screens */
+.navigation li {
+  margin-right: 20px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
+  .navigation {
+    display: none; /* Hide navigation on small screens */
+  }
+  
+  .nav-toggle {
+    display: block; /* Show hamburger menu on small screens */
+    padding: 10px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+  }
+}
+/* Media query for smaller screens */
+@media (max-width: 728px) {
     .logo-container img {
-        width: 40px; /* Adjust the width of the logo for smaller screens */
-        height: 50px; /* Allow the height to adjust accordingly */
+        width: 70px; /* Adjust the width of the logo for smaller screens */
+        height: 80px; /* Allow the height to adjust accordingly */
     }
 
     .logo-container img[alt="Interflow title"] {
@@ -60,40 +90,39 @@ header {
         height: 80px; /* Allow the height to adjust accordingly */
         margin-top: 0; /* Reset margin for better alignment */
     }
+}
 
 
 
 
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Align nav items vertically */
+}
 
-    nav ul {
-        list-style: none;
-        display: flex;
-        align-items: center; /* Align nav items vertically */
-    }
+nav ul li {
+    margin: 0 20px;
+}
 
-    nav ul li {
-        margin: 0 20px;
-    }
+nav ul li a {
+    text-decoration: none;
+    color: #373434;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-    nav ul li a {
-        text-decoration: none;
-        color: #373434;
-        font-size: 16px;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
+nav ul li a:hover {
+    color: #6a0dad;
+}
 
-    nav ul li a:hover {
-        color: #6a0dad;
-    }
-
-    nav ul li a.active {
-        background-color: #6a0dad;
-        color: #fff;
-        border-radius: 5px;
-        padding: 8px 15px;
-    }
+nav ul li a.active {
+    background-color: #6a0dad;
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 15px;
 }
 
 .title {
@@ -628,7 +657,9 @@ header {
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                     
                 </ul>
-            </nav>
+                <button class="nav-toggle">
+                    <i class="fas fa-bars"></i> </button>
+                </nav>
         </div>
     </header>
 
