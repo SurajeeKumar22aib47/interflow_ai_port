@@ -31,7 +31,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 17%;
+    height: 15%;
     padding: 0 20px; /* Adjusted padding */
     z-index: 1000;
     background: url('{% static 'bghead1.jpeg' %}') no-repeat center center/cover;
@@ -49,15 +49,15 @@ header {
 }
 
 /* Media query for smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 728px) {
     .logo-container img {
-        width: 60px; /* Adjust the width of the logo for smaller screens */
-        height: auto; /* Allow the height to adjust accordingly */
+        width: 20px; /* Adjust the width of the logo for smaller screens */
+        height: 20px; /* Allow the height to adjust accordingly */
     }
 
     .logo-container img[alt="Interflow title"] {
-        width: 150px; /* Adjust the width of the title image for smaller screens */
-        height: auto; /* Allow the height to adjust accordingly */
+        width: 80px; /* Adjust the width of the title image for smaller screens */
+        height: 80px; /* Allow the height to adjust accordingly */
         margin-top: 0; /* Reset margin for better alignment */
     }
 }
