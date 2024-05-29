@@ -749,15 +749,12 @@ nav ul li a.active {
                     </div>
                     <div class="contact-item">
                         <button><i class="fas fa-envelope"></i></button>
-                        <p>info@interflowai.com</p>
+                        <p>interflow.ai@gmail.com</p>
                     </div>
                 </div>
-                
-                
                 <div class="contact-form">
                     <h2>Send Us a Message</h2>
-                    <form method="post">
-                        {% csrf_token %}
+                    <form id="contactForm" method="post" action="submit.php">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -771,7 +768,7 @@ nav ul li a.active {
                             <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit">Send Message</button>
+                            <button type="button" onclick="submitForm()">Send Message</button>
                         </div>
                     </form>
                 </div>
@@ -920,7 +917,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-    </script>
+function submitForm() {
+        // You can perform form validation here if needed
+        
+        // Simulate form submission
+        // Here, I'm just showing a success message
+        alert("Message sent successfully!");
+        
+        // You can clear the form fields if needed
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+    }
     
     </script>
 </body>

@@ -130,15 +130,12 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # settings.py
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Gmail's SMTP server
-EMAIL_PORT = 587  # The port for TLS
-EMAIL_USE_TLS = True  # Use TLS
-EMAIL_USE_SSL = False  # Do not use SSL
-EMAIL_HOST_USER = 'interflow.ai@gmail.com'  # Your Gmail address
-EMAIL_HOST_PASSWORD = 'interflow.ai@1424'  # Your Gmail App Password
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'interflow.ai@gmail.com'  # Replace with your Gmail email address
+EMAIL_HOST_PASSWORD = 'interflow.ai@1424'  # Replace with your Gmail password or App Password
 
 
 
