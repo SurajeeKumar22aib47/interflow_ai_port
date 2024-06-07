@@ -66,18 +66,37 @@ header {
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .navigation {
-    display: none; /* Hide navigation on small screens */
-  }
-  
-  .nav-toggle {
-    display: block; /* Show hamburger menu on small screens */
-    padding: 10px;
-    background-color: #ddd;
-    border: none;
-    cursor: pointer;
-  }
-}
+        .navigation {
+            display: none; /* Hide navigation by default on small screens */
+            flex-direction: column; /* Change flex direction to stack links vertically */
+            position: absolute;
+            top: 100%; /* Position below the header */
+            left: 0;
+            background-color: #fff; /* Background color for better visibility */
+            padding: 10px; /* Add padding for spacing */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            z-index: 999; /* Ensure it appears above other content */
+        }
+
+        .navigation.active {
+            display: flex; /* Show navigation when active */
+        }
+
+        .navigation li {
+            margin-bottom: 10px; /* Add margin between navigation items */
+        }
+
+        .nav-toggle {
+            display: block; /* Show hamburger menu on small screens */
+            padding: 10px;
+            background-color: #ddd;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+    }
 /* Media query for smaller screens */
 @media (max-width: 728px) {
     .logo-container img {
@@ -671,23 +690,22 @@ nav ul li a.active {
 </head>
 <body>
     <header class="header-box">
-        
         <div class="header-content">
             <div class="logo-container">
                 <img src="{% static 'logo - nb.png' %}" alt="Interflow AI Logo" onclick="reloadPage()">
                 <img src="{% static 'interflow title - nb.png' %}" alt="Interflow title" onclick="reloadPage()">
             </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav>
-                <ul>
-                    
+                <ul class="navigation">
                     <li><a href="#about" class="nav-link active">About</a></li>
                     <li><a href="#team" class="nav-link">Team</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#pricing" class="nav-link">Pricing</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
-                    
                 </ul>
-                
             </nav>
         </div>
     </header>
@@ -990,7 +1008,14 @@ function submitForm() {
         document.getElementById("email").value = "";
         document.getElementById("message").value = "";
     }
-    
+    document.addEventListener('DOMContentLoaded', function() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navigation = document.querySelector('.navigation');
+
+        navToggle.addEventListener('click', function() {
+            navigation.classList.toggle('active'); // Toggle the active class on click
+        });
+    });
     </script>
 </body>
 </html>
